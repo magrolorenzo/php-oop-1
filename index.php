@@ -18,29 +18,44 @@ class Movie{
         $this->title = $_title;
 
         // Verifica e assegnazione anno
-        if(!is_nan($_year) && $_year > 1850 && $_year < date("Y")){
+        if(is_numeric($_year) && $_year > 1850 && $_year < date("Y")){
             $this->year = $_year;
+        } else{
+            $this->year = "NA";
         };
 
         // Verifica e assegnazione voto da 1 a 10
-        if(!is_nan($_rating) && $_rating >= 0 && $_rating < 10){
+        if(is_numeric($_rating) && $_rating >= 0 && $_rating <= 10){
             $this->rating = $_rating;
+        }else{
+            $this->rating = "NA";
         };
 
         // Verifica e assegnazione lunghezza film in minuti
-        if(!is_nan($_minutes) && $_minutes > 0 ){
+        if(is_numeric($_minutes) && $_minutes > 0 ){
             $this->minutes = $_minutes;
+        }else{
+            $this->minutes = "NA";
         };
-    };
+    }
 
-    public funxtion getTitle(){
-        return $this->$title;
-    };
+    public function getInfos(){
+        echo  "<p> *** Metodo getInfos() *** </p>";
+        foreach ($this as $info_name => $info_value) {
+            echo "<p> $info_name : $info_value </p>";
+       }
+    }
+
 };
 
 $movie_1 = new Movie("Pulp Fiction", 1994, 9, 154);
+$movie_2 = new Movie("Interstellar", "2014", 9, 169);
 
-echo $movie_1->title;
+echo "<p> Titolo:  $movie_1->title </p>";
+echo "<p> Anno: $movie_1->year </p>";
+echo "<p> Rating:  $movie_1->rating /10 </p>";
+echo "<p> Lunghezza: $movie_1->minutes  minuti";
 
+echo $movie_2-> getInfos();
 
 ?>
