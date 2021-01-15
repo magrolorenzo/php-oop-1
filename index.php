@@ -7,10 +7,10 @@
 // vengono istanziati almeno due oggetti ‘Movie’ e stampati a schermo i valori delle relative propriet
 
 class Movie{
-    public $title = "";
-    public $year;
+    public $title = "NA";
+    public $year = "NA";
     public $rating = "NA";
-    public $minutes;
+    public $minutes = "NA";
 
     function __construct($_title, $_year, $_rating, $_minutes){
 
